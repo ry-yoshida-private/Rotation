@@ -22,8 +22,7 @@ classifiers = [
 dependencies = [
     "numpy",
     "scipy",
-    "units @ git+https://github.com/ry-yoshida-private/Units.git",
-    "cartesian-axis-3d @ git+https://github.com/ry-yoshida-private/CartesianAxis3D.git",
+    "units @ git+https://github.com/ry-yoshida-private/Units.git"
 ]
 
 [project.urls]

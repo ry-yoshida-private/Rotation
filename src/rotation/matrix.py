@@ -3,8 +3,6 @@ from __future__ import annotations
 import numpy as np
 from dataclasses import dataclass
 
-from cartesian_axis import Axis
-
 @dataclass(frozen=True)
 class RotationMatrix:
     """
@@ -122,26 +120,6 @@ class RotationMatrix:
             The z-axis of the rotation matrix with shape (3,).
         """
         return self.value[:, 2]
-
-    def extract_axis_rotation(
-        self, 
-        axis: Axis
-        ) -> np.ndarray:
-        """
-        Extract the component of the rotation matrix along the axis.
-
-        Parameters
-        ----------
-        axis: Axis
-            The axis to extract.
-        """
-        match axis:
-            case Axis.X:
-                return self.value[:, 0]
-            case Axis.Y:
-                return self.value[:, 1]
-            case Axis.Z:
-                return self.value[:, 2]
 
     def __matmul__(
         self, 
