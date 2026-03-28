@@ -167,7 +167,7 @@ class RotationMatrix:
         RotationMatrix:
             The rotation matrix from the approximate matrix.
         """
-        Q, R = np.linalg.qr(value)
+        Q, _ = np.linalg.qr(value) #Q, R
         det = np.linalg.det(Q)
 
         if det < 0:
@@ -177,7 +177,7 @@ class RotationMatrix:
     @classmethod
     def from_approximate_matrix_with_SVD(
         cls,
-        value,
+        value: np.ndarray,
         ) -> RotationMatrix:
         """
         Create a RotationMatrix object from an approximate rotation matrix by SVD decomposition.
@@ -192,7 +192,7 @@ class RotationMatrix:
         RotationMatrix:
             The rotation matrix from the approximate matrix.
         """
-        u, s, vh = np.linalg.svd(value)
+        u, _, vh = np.linalg.svd(value) # u, s, vh: np.ndarray
         rotation_matrix = u @ vh
 
         if np.linalg.det(rotation_matrix) < 0:

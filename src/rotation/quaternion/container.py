@@ -1,7 +1,7 @@
 import numpy as np
 from dataclasses import dataclass
 from functools import cached_property
-from scipy.spatial.transform import Rotation
+from scipy.spatial.transform import Rotation # type: ignore
 
 from .format import QuaternionFormat
 from ..matrix import RotationMatrix
