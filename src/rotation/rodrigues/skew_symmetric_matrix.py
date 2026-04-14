@@ -10,7 +10,7 @@ class SkewSymmetricMatrix:
     Attributes
     ----------
     value: np.ndarray
-        The skew symmetric matrix as a 3x3 matrix.
+        The skew symmetric matrix with shape (3, 3).
     """
     value: np.ndarray
 
@@ -21,15 +21,22 @@ class SkewSymmetricMatrix:
         Raises
         ------
         ValueError:
-            If the skew symmetric matrix is not a 3x3 matrix.
+            If the skew symmetric matrix is not a shape (3, 3) array.
         """
         if self.value.shape != (3, 3):
-            raise ValueError("Skew symmetric matrix must be a 3x3 matrix, got shape {self.value.shape}")
+            raise ValueError(
+                f"Skew symmetric matrix must be a shape (3, 3) array, got shape {self.value.shape}."
+            )
 
     @property
     def squared(self) -> np.ndarray:
         """
         Return the squared of the skew symmetric matrix.
+
+        Returns
+        -------
+        np.ndarray:
+            The squared of the skew symmetric matrix with shape (3, 3).
         """
         return self.value @ self.value
 

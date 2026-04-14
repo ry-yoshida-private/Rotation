@@ -24,10 +24,12 @@ class RodriguesRotationParameter:
         Raises
         ------
         ValueError:
-            If the Rodrigues rotation vector is not a 3x1 vector.
+            If the Rodrigues rotation vector is not a shape (3,) array.
         """
         if self.value.shape != (3,):
-            raise ValueError("Rodrigues rotation vector must be a 3x1 vector")
+            raise ValueError(
+                f"Rodrigues rotation vector must be a shape (3,) array, got shape {self.value.shape}."
+            )
 
     @property
     def x(self) -> float:
@@ -75,20 +77,22 @@ class RodriguesRotationParameter:
         Parameters
         ----------
         vector: np.ndarray
-            Vector to be rotated (shape: (3,))
+            Vector to be rotated with shape (3,).
             
         Returns
         -------
         np.ndarray
-            Transformed vector (shape: (3,))
+            Transformed vector with shape (3,).
 
         Raises
         ------
         ValueError:
-            If the input vector is not a 3x1 vector.
+            If the input vector is not a shape (3,) array.
         """
         if vector.shape != (3,):
-            raise ValueError("Input vector must be a 3x1 vector")
+            raise ValueError(
+                f"Input vector must be a shape (3,) array, got shape {vector.shape}."
+            )
 
         return self.rotation_matrix.value @ vector
 

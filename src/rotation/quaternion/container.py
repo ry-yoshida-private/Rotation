@@ -14,7 +14,7 @@ class Quaternion:
     Parameters
     ----------
     value: np.ndarray
-        Quaternion values as a 4-element array.
+        Quaternion values with shape (4,).
     format: QuaternionFormat
         The format of the quaternion (WXYZ or XYZW). Default is WXYZ.
     """
@@ -32,11 +32,11 @@ class Quaternion:
         Raises
         ------
         ValueError:
-            If the quaternion is not a 4-element array.
+            If the quaternion is not a shape (4,) array.
             If the quaternion is not normalized.
         """
         if self.value.shape != (4,):
-            raise ValueError("Invalid quaternion: must be a 4-element array")
+            raise ValueError(f"Invalid quaternion: must be a shape (4,) array, got shape {self.value.shape}.")
         
         # Check if quaternion is normalized (approximately)
         norm = np.linalg.norm(self.value)

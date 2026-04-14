@@ -11,12 +11,12 @@ class RotationMatrix:
     Attributes
     ----------
     value: np.ndarray
-        The rotation matrix as a 3x3 matrix.
+        The rotation matrix with shape (3, 3).
 
     Raises
     ------
     ValueError:
-        If the rotation matrix is not a 3x3 matrix.
+        If the rotation matrix is not a shape (3, 3) array.
         If the rotation matrix is not orthogonal.
         If the rotation matrix does not have determinant +1 (not a proper rotation).
     """
@@ -29,7 +29,9 @@ class RotationMatrix:
     def _is_valid_rotation_matrix(self) -> None:
         """Check if a matrix is a valid rotation matrix."""
         if self.value.shape != (3, 3):
-            raise ValueError("Invalid rotation matrix: must be a 3x3 matrix")
+            raise ValueError(
+                f"Invalid rotation matrix: must be a shape (3, 3) array, got shape {self.value.shape}."
+            )
         
         if not self.is_orthogonal:
             raise ValueError("Invalid rotation matrix: must be orthogonal")
